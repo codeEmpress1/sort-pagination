@@ -1,0 +1,10 @@
+.item_list_cont{
+    margin: 10px auto;
+    width: 100%;
+    padding: 20px 5px;
+}
+.item_list_cont span{
+    margin: 10px;
+    width: 20%;
+    padding: 5px;
+}
