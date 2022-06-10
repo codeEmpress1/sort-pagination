@@ -80,7 +80,7 @@ const App = () => {
     try {
   
       const result = await axios.get(urls[urls.length - 1]);
-      console.log({result})
+      console.log({urls})
       dispatchStories({
         type: 'STORIES_FETCH_SUCCESS',
         payload: result.data,
@@ -119,12 +119,14 @@ const App = () => {
     handleSearchSubmit(event);
   }
   const handlePreviousPage = (event) => {
-    
-    if(urls.length > 1){
+    console.log(urls.length, "lengthhhhhhhh/////// beforeb poop")
+    if(urls.length+1 > 1){
+      urls.pop();
+      console.log(urls.length, "after pop")
       setCurPage(curPage - 1);
-      urls.pop()
+      handleSearchSubmit(event);
     }
-    handleSearchSubmit(event);
+    
   }
   const handleReverse = () => {
       setReverse(!reverse)
@@ -175,8 +177,8 @@ const App = () => {
         <>
         <h2>Page: {curPage + 1} of ...</h2>
           <List list={stories.data} onRemoveItem={handleRemoveStory} sortBy={sortState} reverse={reverse} />
-          <button onClick={(event) => handleNextPage(event)}>Next Page</button>
-          <button onClick={(event) => handlePreviousPage(event)}>Previous Page</button>
+          <button onClick={(event) => handleNextPage(event)}>View more</button>
+          <button onClick={(event) => handlePreviousPage(event)}>Go back</button>
         </>
       )}
     </div>
